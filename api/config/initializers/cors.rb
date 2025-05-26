@@ -7,10 +7,10 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
    allow do
-    origins "#{Rails.application.credentials.dig(:frontend_url)}"
+    origins ENV.fetch("FRONTEND_URL")
 
 
-   resource "*",
+    resource "*",
              headers: :any,
              methods: %i[get post put patch delete options head],
              credentials: true
