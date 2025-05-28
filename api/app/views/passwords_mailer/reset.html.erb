@@ -1,4 +1,14 @@
+<h1>Reset Your Password</h1>
+
+<p>Hello, <%= @user.first_name %></p>
+
 <p>
-  You can reset your password within the next 15 minutes on
-  <%= link_to "this password reset page", edit_password_url(@user.password_reset_token) %>.
+  You have requested to reset your password. Please click the link below to
+  reset it:
 </p>
+
+<p><a href="<%= @reset_url %>">Reset Password</a></p>
+
+<p>This link will expire in 15 minutes.</p>
+
+<p>If you didn't request this, please ignore this email.</p>
