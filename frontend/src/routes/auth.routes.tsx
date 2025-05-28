@@ -4,12 +4,13 @@ import { Navigate } from 'react-router';
 import AuthLayout from '@/pages/auth/layout';
 // import { settingsLoader } from '@/loaders';
 import { GlobalFallback } from '@/components/global-fallback';
+import { settingsLoader } from '@/loaders';
 
 export const authRoutes = [
   {
     path: 'auth',
     element: <AuthLayout />,
-    // loader: settingsLoader,
+    loader: settingsLoader,
     hydrateFallbackElement: <GlobalFallback />,
     children: [
       {
