@@ -5918,3 +5918,692 @@ Processing by Api::V1::SessionsController#show as */*
 Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
 
 
+[dotenv] Set [36mFRONTEND_URL[0m, [36mAPI_URL[0m, [36mJWT_SECRET[0m, [36mAWS_ACCESS_KEY_ID[0m, [36mAWS_SECRET_ACCESS_KEY[0m, [36mAWS_REGION[0m, [36mAWS_BUCKET_NAME[0m, [36mSMTP_USERNAME[0m, and [36mSMTP_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:34:44 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Api'*/[0m
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 14 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 86ms (Views: 1.3ms | ActiveRecord: 14.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:34:45 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 14 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/passwords" for ::1 at 2025-05-28 10:34:51 -0400
+Processing by Api::V1::PasswordsController#create as */*
+  Parameters: {"email_address" => "[FILTERED]", "password" => {"email_address" => "[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='passwords'*/[0m
+  ↳ app/controllers/api/v1/passwords_controller.rb:6:in 'Api::V1::PasswordsController#create'
+[ActiveJob]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='passwords'*/[0m
+[ActiveJob]   ↳ app/controllers/api/v1/passwords_controller.rb:7:in 'Api::V1::PasswordsController#create'
+[ActiveJob]   [1m[36mSolidQueue::Job Create (10.8ms)[0m  [1m[32mINSERT INTO "solid_queue_jobs" ("queue_name", "class_name", "arguments", "priority", "active_job_id", "scheduled_at", "finished_at", "concurrency_key", "created_at", "updated_at") VALUES ('default', 'ActionMailer::MailDeliveryJob', '{"job_class":"ActionMailer::MailDeliveryJob","job_id":"9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f","provider_job_id":null,"queue_name":"default","priority":null,"arguments":["PasswordsMailer","reset","deliver_now",{"args":[{"_aj_globalid":"gid://api/User/1"}],"_aj_ruby2_keywords":["args"]}],"executions":0,"exception_executions":{},"locale":"en","timezone":"Central Time (US \u0026 Canada)","enqueued_at":"2025-05-28T14:34:51.762129000Z","scheduled_at":"2025-05-28T14:34:51.759752000Z"}', 0, '9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f', '2025-05-28 10:34:51.759752', NULL, NULL, '2025-05-28 10:34:51.771570', '2025-05-28 10:34:51.771570') RETURNING "id" /*action='create',application='Api',controller='passwords'*/[0m
+[ActiveJob]   ↳ app/controllers/api/v1/passwords_controller.rb:7:in 'Api::V1::PasswordsController#create'
+[ActiveJob]   [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mSAVEPOINT active_record_1 /*action='create',application='Api',controller='passwords'*/[0m
+[ActiveJob]   ↳ app/controllers/api/v1/passwords_controller.rb:7:in 'Api::V1::PasswordsController#create'
+[ActiveJob]   [1m[36mSolidQueue::Job Load (4.0ms)[0m  [1m[34mSELECT "solid_queue_jobs".* FROM "solid_queue_jobs" WHERE "solid_queue_jobs"."id" = 1 LIMIT 1 /*action='create',application='Api',controller='passwords'*/[0m
+[ActiveJob]   ↳ app/controllers/api/v1/passwords_controller.rb:7:in 'Api::V1::PasswordsController#create'
+[ActiveJob]   [1m[36mSolidQueue::ReadyExecution Create (2.9ms)[0m  [1m[32mINSERT INTO "solid_queue_ready_executions" ("job_id", "queue_name", "priority", "created_at") VALUES (1, 'default', 0, '2025-05-28 10:34:51.815277') RETURNING "id" /*action='create',application='Api',controller='passwords'*/[0m
+[ActiveJob]   ↳ app/controllers/api/v1/passwords_controller.rb:7:in 'Api::V1::PasswordsController#create'
+[ActiveJob]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1 /*action='create',application='Api',controller='passwords'*/[0m
+[ActiveJob]   ↳ app/controllers/api/v1/passwords_controller.rb:7:in 'Api::V1::PasswordsController#create'
+[ActiveJob]   [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='passwords'*/[0m
+[ActiveJob]   ↳ app/controllers/api/v1/passwords_controller.rb:7:in 'Api::V1::PasswordsController#create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f) to SolidQueue(default) with arguments: "PasswordsMailer", "reset", "deliver_now", {args: [#<GlobalID:0x00000001296be9a8 @uri=#<URI::GID gid://api/User/1>>]}
+[ActiveJob] ↳ app/controllers/api/v1/passwords_controller.rb:7:in 'Api::V1::PasswordsController#create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 156ms (Views: 0.3ms | ActiveRecord: 46.7ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+[dotenv] Set [36mFRONTEND_URL[0m, [36mAPI_URL[0m, [36mJWT_SECRET[0m, [36mAWS_ACCESS_KEY_ID[0m, [36mAWS_SECRET_ACCESS_KEY[0m, [36mAWS_REGION[0m, [36mAWS_BUCKET_NAME[0m, [36mSMTP_USERNAME[0m, and [36mSMTP_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Create (2.6ms)[0m  [1m[32mINSERT INTO "solid_queue_processes" ("kind", "last_heartbeat_at", "supervisor_id", "pid", "hostname", "metadata", "created_at", "name") VALUES ('Supervisor', '2025-05-28 10:35:45.827952', NULL, 65942, 'Sergius-MBP', NULL, '2025-05-28 10:35:45.883453', 'supervisor-905b38b1882d1d5fa1ff') RETURNING "id" /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+SolidQueue-1.1.5 Register Supervisor (62.4ms)  pid: 65942, hostname: "Sergius-MBP", process_id: 1, name: "supervisor-905b38b1882d1d5fa1ff"
+  [1m[36mSolidQueue::ClaimedExecution Load (0.7ms)[0m  [1m[34mSELECT "solid_queue_claimed_executions".* FROM "solid_queue_claimed_executions" LEFT OUTER JOIN "solid_queue_processes" ON "solid_queue_processes"."id" = "solid_queue_claimed_executions"."process_id" WHERE "solid_queue_processes"."id" IS NULL /*application='Api'*/[0m
+SolidQueue-1.1.5 Fail claimed jobs (6.7ms)  job_ids: [], process_ids: []
+SolidQueue-1.1.5 Started Supervisor (91.9ms)  pid: 65942, hostname: "Sergius-MBP", process_id: 1, name: "supervisor-905b38b1882d1d5fa1ff"
+  [1m[36mSolidQueue::Process Load (0.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."last_heartbeat_at" <= '2025-05-28 10:30:45.934799' AND "solid_queue_processes"."id" != 1 ORDER BY "solid_queue_processes"."id" ASC LIMIT 50 FOR UPDATE SKIP LOCKED /*application='Api'*/[0m
+SolidQueue-1.1.5 Prune dead processes (7.1ms)  size: 0
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Create (2.5ms)[0m  [1m[32mINSERT INTO "solid_queue_processes" ("kind", "last_heartbeat_at", "supervisor_id", "pid", "hostname", "metadata", "created_at", "name") VALUES ('Dispatcher', '2025-05-28 10:35:45.926430', 1, 65945, 'Sergius-MBP', '{"polling_interval":1,"batch_size":500,"concurrency_maintenance_interval":600}', '2025-05-28 10:35:45.936153', 'dispatcher-ad58d9008829ac676067') RETURNING "id" /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Create (2.0ms)[0m  [1m[32mINSERT INTO "solid_queue_processes" ("kind", "last_heartbeat_at", "supervisor_id", "pid", "hostname", "metadata", "created_at", "name") VALUES ('Worker', '2025-05-28 10:35:45.935169', 1, 65946, 'Sergius-MBP', '{"polling_interval":0.1,"queues":"*","thread_pool_size":3}', '2025-05-28 10:35:45.942571', 'worker-a13823c95af31337c1ff') RETURNING "id" /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+SolidQueue-1.1.5 Register Dispatcher (46.9ms)  pid: 65945, hostname: "Sergius-MBP", process_id: 2, name: "dispatcher-ad58d9008829ac676067"
+SolidQueue-1.1.5 Register Worker (38.4ms)  pid: 65946, hostname: "Sergius-MBP", process_id: 3, name: "worker-a13823c95af31337c1ff"
+SolidQueue-1.1.5 Started Worker (40.6ms)  pid: 65946, hostname: "Sergius-MBP", process_id: 3, name: "worker-a13823c95af31337c1ff", polling_interval: 0.1, queues: "*", thread_pool_size: 3
+SolidQueue-1.1.5 Started Dispatcher (49.3ms)  pid: 65945, hostname: "Sergius-MBP", process_id: 2, name: "dispatcher-ad58d9008829ac676067", polling_interval: 1, batch_size: 500, concurrency_maintenance_interval: 600
+  [1m[36mSolidQueue::Semaphore Pluck (1.2ms)[0m  [1m[34mSELECT "solid_queue_semaphores"."id" FROM "solid_queue_semaphores" WHERE "solid_queue_semaphores"."expires_at" < '2025-05-28 10:35:45.980413' ORDER BY "solid_queue_semaphores"."id" ASC LIMIT 500 /*application='Api'*/[0m
+  [1m[36mSolidQueue::BlockedExecution Pluck (0.5ms)[0m  [1m[34mSELECT DISTINCT "solid_queue_blocked_executions"."concurrency_key" FROM "solid_queue_blocked_executions" WHERE "solid_queue_blocked_executions"."expires_at" < '2025-05-28 10:35:46.000140' ORDER BY "solid_queue_blocked_executions"."concurrency_key" ASC LIMIT 500 /*application='Api'*/[0m
+SolidQueue-1.1.5 Unblock jobs (4.9ms)  limit: 500, size: 0
+  [1m[36mSolidQueue::Job Load (0.5ms)[0m  [1m[34mSELECT "solid_queue_jobs".* FROM "solid_queue_jobs" WHERE "solid_queue_jobs"."id" = 1 LIMIT 1 /*application='Api'*/[0m
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*application='Api'*/[0m
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f] Performing ActionMailer::MailDeliveryJob (Job ID: 9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f) from SolidQueue(default) enqueued at 2025-05-28T14:34:51.762129000Z with arguments: "PasswordsMailer", "reset", "deliver_now", {args: [#<GlobalID:0x000000012836df70 @uri=#<URI::GID gid://api/User/1>>]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   Rendering passwords_mailer/reset.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   Rendered passwords_mailer/reset.html.erb within layouts/mailer (Duration: 1.9ms | GC: 1.2ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   Rendered layout layouts/mailer.html.erb (Duration: 2.4ms | GC: 1.2ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   Rendering passwords_mailer/reset.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   Rendered passwords_mailer/reset.text.erb within layouts/mailer (Duration: 0.2ms | GC: 0.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f]   Rendered layout layouts/mailer.text.erb (Duration: 0.3ms | GC: 0.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f] PasswordsMailer#reset: processed outbound mail in 74.3ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f] Delivered mail 68371f422a1cf_1019a18a0844b3@Sergius-MBP.mail (1334.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f] Date: Wed, 28 May 2025 10:35:46 -0400
+From: from@example.com
+To: frunza.sergiu3@gmail.com
+Message-ID: <68371f422a1cf_1019a18a0844b3@Sergius-MBP.mail>
+Subject: Reset your password
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_68371f42285eb_1019a18a0843e2";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_68371f42285eb_1019a18a0843e2
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+You have requested to reset your password. Please click the link below to
+reset it:
+http://localhost:5173/auth/reset-password?token=eyJfcmFpbHMiOnsiZGF0YSI6WzEsImdWRndQYWU2dXUiXSwiZXhwIjoiMjAyNS0wNS0yOFQxNDo1MDo0Ni4wOTlaIiwicHVyIjoiVXNlclxucGFzc3dvcmRfcmVzZXRcbjkwMCJ9fQ==--54065621fe72f91175dc12122a087794e1bc6dfe
+This link will expire in 15 minutes.
+If you didn't request this, please ignore this email.
+
+
+----==_mimepart_68371f42285eb_1019a18a0843e2
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!-- BEGIN app/views/layouts/mailer.html.erb --><!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!-- BEGIN app/views/passwords_mailer/reset.html.erb --><h1>Reset Your Password</h1>
+
+<p>Hello, Sergiu</p>
+
+<p>
+  You have requested to reset your password. Please click the link below to
+  reset it:
+</p>
+
+<p><a href="http://localhost:5173/auth/reset-password?token=eyJfcmFpbHMiOnsiZGF0YSI6WzEsImdWRndQYWU2dXUiXSwiZXhwIjoiMjAyNS0wNS0yOFQxNDo1MDo0Ni4wOTlaIiwicHVyIjoiVXNlclxucGFzc3dvcmRfcmVzZXRcbjkwMCJ9fQ==--54065621fe72f91175dc12122a087794e1bc6dfe">Reset Password</a></p>
+
+<p>This link will expire in 15 minutes.</p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<!-- END app/views/passwords_mailer/reset.html.erb -->
+  </body>
+</html>
+<!-- END app/views/layouts/mailer.html.erb -->
+----==_mimepart_68371f42285eb_1019a18a0843e2--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f] Performed ActionMailer::MailDeliveryJob (Job ID: 9a56e0ae-2ab6-4444-9f7b-5afb6f2b209f) from SolidQueue(default) in 1458.86ms
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mBEGIN /*application='Api',job='ActionMailer%3A%3AMailDeliveryJob'*/[0m
+  [1m[36mSolidQueue::Job Update (10.3ms)[0m  [1m[33mUPDATE "solid_queue_jobs" SET "updated_at" = '2025-05-28 10:35:47.508118', "finished_at" = '2025-05-28 10:35:47.508118' WHERE "solid_queue_jobs"."id" = 1 /*application='Api',job='ActionMailer%3A%3AMailDeliveryJob'*/[0m
+  [1m[36mSolidQueue::ClaimedExecution Destroy (3.5ms)[0m  [1m[31mDELETE FROM "solid_queue_claimed_executions" WHERE "solid_queue_claimed_executions"."id" = 1 /*application='Api',job='ActionMailer%3A%3AMailDeliveryJob'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*application='Api',job='ActionMailer%3A%3AMailDeliveryJob'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:36:45.914202' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:36:45.993346' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:36:45.993429' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+Started PUT "/api/v1/passwords/eyJfcmFpbHMiOnsiZGF0YSI6WzEsImdWRndQYWU2dXUiXSwiZXhwIjoiMjAyNS0wNS0yOFQxNDo1MDo0Ni4wOTlaIiwicHVyIjoiVXNlclxucGFzc3dvcmRfcmVzZXRcbjkwMCJ9fQ==--54065621fe72f91175dc12122a087794e1bc6dfe" for ::1 at 2025-05-28 10:37:27 -0400
+Processing by Api::V1::PasswordsController#update as */*
+  Parameters: {"password" => "[FILTERED]", "token" => "[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='update',application='Api',controller='passwords'*/[0m
+  ↳ app/controllers/api/v1/passwords_controller.rb:33:in 'Api::V1::PasswordsController#set_user_by_token'
+[31mUnpermitted parameter: :token. Context: { controller: Api::V1::PasswordsController, action: update, request: #<ActionDispatch::Request:0x000000012973ca88>, params: {"password" => "[FILTERED]", "token" => "[FILTERED]", "controller" => "api/v1/passwords", "action" => "update"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='update',application='Api',controller='passwords'*/[0m
+  ↳ app/controllers/api/v1/passwords_controller.rb:19:in 'Api::V1::PasswordsController#update'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = '$2a$12$Gwc0VaWg870XfGgDuLp/6.upsWIazGb5TJMWll1rk7qSamFZnovSi', "updated_at" = '2025-05-28 10:37:28.143352' WHERE "users"."id" = 1 /*action='update',application='Api',controller='passwords'*/[0m
+  ↳ app/controllers/api/v1/passwords_controller.rb:19:in 'Api::V1::PasswordsController#update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*action='update',application='Api',controller='passwords'*/[0m
+  ↳ app/controllers/api/v1/passwords_controller.rb:19:in 'Api::V1::PasswordsController#update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 351ms (Views: 0.4ms | ActiveRecord: 7.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-28 10:37:29 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (1.8ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.4ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x0011017bf66c17c80dda41ffffffff04086906', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 368ms (Views: 0.7ms | ActiveRecord: 15.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session/refresh_token" for ::1 at 2025-05-28 10:37:30 -0400
+Processing by Api::V1::SessionsController#refresh_token as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.02ms)
+Filter chain halted as :require_authentication rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-28 10:37:32 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (2.8ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.3ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x0011017bf66c17c80dda41ffffffff04086907', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mSession Create (2.0ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-28 10:37:33.235942', '2025-05-28 10:37:33.235942') RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.02ms)
+Completed 201 Created in 359ms (Views: 0.3ms | ActiveRecord: 6.8ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:37:33 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 15 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:37:35 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 15 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:37:38 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 15 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:37:45.939137' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (5.8ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (5.8ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:37:46.016135' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:37:46.017145' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+Started GET "/" for ::1 at 2025-05-28 10:38:11 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/sergiufrunza/.rvm/gems/ruby-3.4.2/gems/railties-8.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/sergiufrunza/.rvm/gems/ruby-3.4.2/gems/railties-8.0.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 2.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.8ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:38:45.973048' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:38:46.043829' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (3.2ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:38:46.044824' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:39:46.010516' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (13.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (14.8ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:39:46.083465' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.5ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:39:46.089494' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (2.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."last_heartbeat_at" <= '2025-05-28 10:35:45.947386' AND "solid_queue_processes"."id" != 1 ORDER BY "solid_queue_processes"."id" ASC LIMIT 50 FOR UPDATE SKIP LOCKED /*application='Api'*/[0m
+SolidQueue-1.1.5 Prune dead processes (14.2ms)  size: 0
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (10.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:40:46.044129' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (11.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:40:46.121594' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (11.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:40:46.131245' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.8ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:41:46.079749' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:41:46.154256' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.8ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:41:46.166806' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:42:46.114215' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:42:46.183128' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:42:46.193526' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:43:46.148851' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.5ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:43:46.211560' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.9ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:43:46.224318' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (4.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:44:46.179483' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (4.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:44:46.240490' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:44:46.242964' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."last_heartbeat_at" <= '2025-05-28 10:40:45.965373' AND "solid_queue_processes"."id" != 1 ORDER BY "solid_queue_processes"."id" ASC LIMIT 50 FOR UPDATE SKIP LOCKED /*application='Api'*/[0m
+SolidQueue-1.1.5 Prune dead processes (14.5ms)  size: 0
+  [1m[36mSolidQueue::Semaphore Pluck (3.1ms)[0m  [1m[34mSELECT "solid_queue_semaphores"."id" FROM "solid_queue_semaphores" WHERE "solid_queue_semaphores"."expires_at" < '2025-05-28 10:45:46.011421' ORDER BY "solid_queue_semaphores"."id" ASC LIMIT 500 /*application='Api'*/[0m
+  [1m[36mSolidQueue::BlockedExecution Pluck (2.2ms)[0m  [1m[34mSELECT DISTINCT "solid_queue_blocked_executions"."concurrency_key" FROM "solid_queue_blocked_executions" WHERE "solid_queue_blocked_executions"."expires_at" < '2025-05-28 10:45:46.027390' ORDER BY "solid_queue_blocked_executions"."concurrency_key" ASC LIMIT 500 /*application='Api'*/[0m
+SolidQueue-1.1.5 Unblock jobs (15.0ms)  limit: 500, size: 0
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (10.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:45:46.208368' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:45:46.269325' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:45:46.269028' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:46:46.237866' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:46:46.300693' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (18.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:46:46.307384' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:47:46.271092' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (13.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (12.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (3.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:47:46.339059' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (5.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:47:46.339725' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:48:46.304012' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (3.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:48:46.374851' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:48:46.377319' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (3.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:49:46.334232' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:49:46.409219' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:49:46.412102' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (0.8ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."last_heartbeat_at" <= '2025-05-28 10:45:45.983136' AND "solid_queue_processes"."id" != 1 ORDER BY "solid_queue_processes"."id" ASC LIMIT 50 FOR UPDATE SKIP LOCKED /*application='Api'*/[0m
+SolidQueue-1.1.5 Prune dead processes (5.8ms)  size: 0
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:50:46.408586' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (1.8ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:50:46.421915' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (1.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:50:46.425197' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (12.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (2.1ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:51:46.442170' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:51:46.450031' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:51:46.452243' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (13.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (5.8ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:52:46.488094' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (24.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (5.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:52:46.488990' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.8ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:52:46.501894' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (5.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (4.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:53:46.519332' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (2.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:53:46.524403' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.8ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:53:46.531634' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (16.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (23.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:54:46.568436' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (14.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (27.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:54:46.573714' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:54:46.574297' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (5.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."last_heartbeat_at" <= '2025-05-28 10:50:45.994324' AND "solid_queue_processes"."id" != 1 ORDER BY "solid_queue_processes"."id" ASC LIMIT 50 FOR UPDATE SKIP LOCKED /*application='Api'*/[0m
+SolidQueue-1.1.5 Prune dead processes (13.4ms)  size: 0
+  [1m[36mSolidQueue::Semaphore Pluck (1.6ms)[0m  [1m[34mSELECT "solid_queue_semaphores"."id" FROM "solid_queue_semaphores" WHERE "solid_queue_semaphores"."expires_at" < '2025-05-28 10:55:46.045223' ORDER BY "solid_queue_semaphores"."id" ASC LIMIT 500 /*application='Api'*/[0m
+  [1m[36mSolidQueue::BlockedExecution Pluck (1.4ms)[0m  [1m[34mSELECT DISTINCT "solid_queue_blocked_executions"."concurrency_key" FROM "solid_queue_blocked_executions" WHERE "solid_queue_blocked_executions"."expires_at" < '2025-05-28 10:55:46.057355' ORDER BY "solid_queue_blocked_executions"."concurrency_key" ASC LIMIT 500 /*application='Api'*/[0m
+SolidQueue-1.1.5 Unblock jobs (10.3ms)  limit: 500, size: 0
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (10.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (11.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.9ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:55:46.592367' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:55:46.602845' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.5ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:55:46.606948' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (13.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:56:46.633330' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:56:46.633026' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:56:46.638399' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (14.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (3.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:57:46.666714' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (2.9ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:57:46.666548' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (76.8ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.5ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:57:46.745833' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.8ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:58:46.695640' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:58:46.697580' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:58:46.782942' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (21.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (20.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:59:46.735834' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:59:46.736117' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 10:59:46.817033' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (1.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."last_heartbeat_at" <= '2025-05-28 10:55:46.014792' AND "solid_queue_processes"."id" != 1 ORDER BY "solid_queue_processes"."id" ASC LIMIT 50 FOR UPDATE SKIP LOCKED /*application='Api'*/[0m
+SolidQueue-1.1.5 Prune dead processes (12.8ms)  size: 0
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (14.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (18.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.5ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:00:46.768863' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:00:46.772047' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (3.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:00:46.832573' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:01:46.789939' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:01:46.801519' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (3.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:01:46.848815' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (2.0ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:02:46.821333' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.6ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:02:46.834980' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (1.8ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:02:46.859121' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (7.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.5ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:03:46.850000' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (11.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:03:46.861666' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (1.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:03:46.869843' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.9ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:04:46.880371' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (5.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (18.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.9ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:04:46.898825' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:04:46.902947' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (1.8ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."last_heartbeat_at" <= '2025-05-28 11:00:46.034282' AND "solid_queue_processes"."id" != 1 ORDER BY "solid_queue_processes"."id" ASC LIMIT 50 FOR UPDATE SKIP LOCKED /*application='Api'*/[0m
+SolidQueue-1.1.5 Prune dead processes (22.3ms)  size: 0
+  [1m[36mSolidQueue::Semaphore Pluck (3.3ms)[0m  [1m[34mSELECT "solid_queue_semaphores"."id" FROM "solid_queue_semaphores" WHERE "solid_queue_semaphores"."expires_at" < '2025-05-28 11:05:46.070405' ORDER BY "solid_queue_semaphores"."id" ASC LIMIT 500 /*application='Api'*/[0m
+  [1m[36mSolidQueue::BlockedExecution Pluck (5.8ms)[0m  [1m[34mSELECT DISTINCT "solid_queue_blocked_executions"."concurrency_key" FROM "solid_queue_blocked_executions" WHERE "solid_queue_blocked_executions"."expires_at" < '2025-05-28 11:05:46.082103' ORDER BY "solid_queue_blocked_executions"."concurrency_key" ASC LIMIT 500 /*application='Api'*/[0m
+SolidQueue-1.1.5 Unblock jobs (10.7ms)  limit: 500, size: 0
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.5ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:05:46.922526' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (4.7ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:05:46.923688' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (5.4ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:05:46.940040' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (6.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:06:46.949956' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:06:46.953334' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (4.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.2ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:06:46.961311' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (17.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (2.7ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (3.3ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:07:46.983198' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.2ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:07:46.984172' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.2ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:07:46.985266' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (5.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (13.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (13.1ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.8ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:08:47.012354' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (2.1ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:08:47.012209' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.6ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:08:47.012544' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (4.2ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (9.0ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (8.9ms)[0m  [1m[37mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 LIMIT 1 FOR UPDATE /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.3ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:09:47.041963' WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (1.4ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:09:47.041894' WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Update (0.2ms)[0m  [1m[33mUPDATE "solid_queue_processes" SET "last_heartbeat_at" = '2025-05-28 11:09:47.043639' WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Destroy (3.3ms)[0m  [1m[31mDELETE FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 2 /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Destroy (6.8ms)[0m  [1m[31mDELETE FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 3 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+SolidQueue-1.1.5 Deregister Dispatcher (5.4ms)  process_id: 2, pid: 65945, hostname: "Sergius-MBP", name: "dispatcher-ad58d9008829ac676067", last_heartbeat_at: "2025-05-28T10:09:47-05:00", claimed_size: nil, pruned: false
+SolidQueue-1.1.5 Shutdown Dispatcher (6.1ms)  pid: 65945, hostname: "Sergius-MBP", process_id: 2, name: "dispatcher-ad58d9008829ac676067", polling_interval: 1, batch_size: 500, concurrency_maintenance_interval: 600
+  [1m[36mSolidQueue::ClaimedExecution Load (1.1ms)[0m  [1m[34mSELECT "solid_queue_claimed_executions".* FROM "solid_queue_claimed_executions" WHERE "solid_queue_claimed_executions"."process_id" = 3 /*application='Api'*/[0m
+SolidQueue-1.1.5 Release claimed jobs (2.3ms)  size: 0
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+SolidQueue-1.1.5 Deregister Worker (13.0ms)  process_id: 3, pid: 65946, hostname: "Sergius-MBP", name: "worker-a13823c95af31337c1ff", last_heartbeat_at: "2025-05-28T10:09:47-05:00", claimed_size: nil, pruned: false
+SolidQueue-1.1.5 Shutdown Worker (15.9ms)  pid: 65946, hostname: "Sergius-MBP", process_id: 3, name: "worker-a13823c95af31337c1ff", polling_interval: 0.1, queues: "*", thread_pool_size: 3
+SolidQueue-1.1.5 Supervisor terminated gracefully (116.3ms)  process_id: 1, supervisor_pid: 65942, supervised_processes: [65945, 65946]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Destroy (2.9ms)[0m  [1m[31mDELETE FROM "solid_queue_processes" WHERE "solid_queue_processes"."id" = 1 /*application='Api'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Api'*/[0m
+  [1m[36mSolidQueue::Process Load (0.4ms)[0m  [1m[34mSELECT "solid_queue_processes".* FROM "solid_queue_processes" WHERE "solid_queue_processes"."supervisor_id" = 1 /*application='Api'*/[0m
+SolidQueue-1.1.5 Deregister Supervisor (11.5ms)  process_id: 1, pid: 65942, hostname: "Sergius-MBP", name: "supervisor-905b38b1882d1d5fa1ff", last_heartbeat_at: "2025-05-28T10:09:47-05:00", claimed_size: nil, pruned: false
+SolidQueue-1.1.5 Shutdown Supervisor (12.8ms)  pid: 65942, hostname: "Sergius-MBP", process_id: 1, name: "supervisor-905b38b1882d1d5fa1ff"
