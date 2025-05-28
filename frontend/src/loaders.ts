@@ -45,6 +45,8 @@ export const verifyAuthLoader = async ({ request }: { request: Request }) => {
     authApi.endpoints.verify.initiate()
   )
 
+  console.log("verifyAuthLoader", result);
+
   if (result.error) {
     Cookies.remove("session_id")
     return redirect(`/auth/login?return_to=${encodeURIComponent(returnTo)}`);
