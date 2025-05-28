@@ -8,32 +8,31 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-// import { handleApiError } from '@/lib/utils';
-// import { useResetPasswordMutation } from '@/services/auth-api';
-import { Link, useSearchParams } from 'react-router';
-// import { toast } from 'sonner';
+import { handleApiError } from '@/lib/utils';
+import { useResetPasswordMutation } from '@/services/auth-api';
+import { Link, useNavigate, useSearchParams } from 'react-router';
+import { toast } from 'sonner';
 
 export function ResetPasswordForm() {
-  // const redirect = useNavigate();
+  const redirect = useNavigate();
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
-  // const [resetPassword, { isLoading }] = useResetPasswordMutation();
+  const [resetPassword, { isLoading }] = useResetPasswordMutation();
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const password = form.password.value;
 
-    console.log(password, token);
-    // resetPassword({ password, token: token ?? '' })
-    //   .unwrap()
-    //   .then((response) => {
-    //     toast.success(response.message);
-    //     redirect('/auth/login');
-    //   })
-    //   .catch((error) => {
-    //     handleApiError(error);
-    //   });
+    resetPassword({ password, token: token ?? '' })
+      .unwrap()
+      .then((response) => {
+        toast.success(response.message);
+        redirect('/auth/login');
+      })
+      .catch((error) => {
+        handleApiError(error);
+      });
   }
   return (
     <Card className="mx-auto w-full">
@@ -56,8 +55,8 @@ export function ResetPasswordForm() {
             />
           </div>
           <LoadingButton
-            loading={false}
-            disabled={false}
+            loading={isLoading}
+            disabled={isLoading}
             type="submit"
             className="w-full"
           >

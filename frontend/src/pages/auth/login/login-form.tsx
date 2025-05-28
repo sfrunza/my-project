@@ -9,15 +9,15 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-// import { handleApiError } from '@/lib/utils';
-// import { useLoginMutation } from '@/services/auth-api';
-import { Link } from 'react-router';
+import { handleApiError } from '@/lib/utils';
+import { useLoginMutation } from '@/services/auth-api';
+import { Link, useNavigate, useSearchParams } from 'react-router';
 
 export function LoginForm() {
-  // const navigate = useNavigate();
-  // const [searchParams] = useSearchParams();
-  // const [login, { isLoading }] = useLoginMutation();
-  // const returnTo = searchParams.get('return_to');
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [login, { isLoading }] = useLoginMutation();
+  const returnTo = searchParams.get('return_to');
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -25,33 +25,31 @@ export function LoginForm() {
     const email_address = form.email_address.value;
     const password = form.password.value;
 
-    console.log(email_address, password);
-
-    // login({ email_address, password })
-    //   .unwrap()
-    //   .then((response) => {
-    //     if (returnTo) {
-    //       navigate(returnTo);
-    //       return;
-    //     }
-    //     switch (response.user.role) {
-    //       case 'admin':
-    //         navigate('/crm', { replace: true });
-    //         break;
-    //       case 'manager':
-    //         navigate('/crm', { replace: true });
-    //         break;
-    //       case 'customer':
-    //         navigate('/account', { replace: true });
-    //         break;
-    //       default:
-    //         navigate('/', { replace: true });
-    //         break;
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     handleApiError(error);
-    //   });
+    login({ email_address, password })
+      .unwrap()
+      .then((response) => {
+        if (returnTo) {
+          navigate(returnTo);
+          return;
+        }
+        switch (response.user.role) {
+          case 'admin':
+            navigate('/crm', { replace: true });
+            break;
+          case 'manager':
+            navigate('/crm', { replace: true });
+            break;
+          case 'customer':
+            navigate('/account', { replace: true });
+            break;
+          default:
+            navigate('/', { replace: true });
+            break;
+        }
+      })
+      .catch((error) => {
+        handleApiError(error);
+      });
   }
 
   return (
@@ -81,8 +79,8 @@ export function LoginForm() {
             <PasswordInput id="password" defaultValue={'111111'} required />
           </div>
           <LoadingButton
-            loading={false}
-            disabled={false}
+            loading={isLoading}
+            disabled={isLoading}
             type="submit"
             className="w-full"
           >

@@ -8,26 +8,24 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-// import { useForgotPasswordMutation } from '@/services/auth-api';
+import { useForgotPasswordMutation } from '@/services/auth-api';
 import { Link } from 'react-router';
-// import { toast } from 'sonner';
+import { toast } from 'sonner';
 
 export function ForgotPasswordForm() {
-  // const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
+  const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const email_address = form.email_address.value;
 
-    console.log(email_address);
-
-    // forgotPassword({ email_address })
-    //   .unwrap()
-    //   .then((response) => {
-    //     toast.success(response.message);
-    //     form.reset();
-    //   });
+    forgotPassword({ email_address })
+      .unwrap()
+      .then((response) => {
+        toast.success(response.message);
+        form.reset();
+      });
   }
   return (
     <Card className="mx-auto w-full">
@@ -53,8 +51,8 @@ export function ForgotPasswordForm() {
             />
           </div>
           <LoadingButton
-            loading={false}
-            disabled={false}
+            loading={isLoading}
+            disabled={isLoading}
             type="submit"
             className="w-full"
           >
