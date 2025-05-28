@@ -58,8 +58,9 @@ module Authentication
           value: session.id,
           expires: 30.days.from_now,
           # httponly: true,
-          same_site: :strict,
-          secure: Rails.env.production?
+          same_site: :none,
+          domain: :all,
+          secure: Rails.env.production? || Rails.env.development?
         }
 
         @auth_token = token

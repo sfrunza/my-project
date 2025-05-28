@@ -5545,3 +5545,376 @@ Processing by Api::V1::SessionsController#show as */*
 Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 1.9ms (2 queries, 0 cached) | GC: 0.0ms)
 
 
+[dotenv] Set [36mFRONTEND_URL[0m, [36mJWT_SECRET[0m, [36mAWS_ACCESS_KEY_ID[0m, [36mAWS_SECRET_ACCESS_KEY[0m, [36mAWS_REGION[0m, [36mAWS_BUCKET_NAME[0m, [36mSMTP_USERNAME[0m, and [36mSMTP_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:19:57 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Api'*/[0m
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.8ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 7 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 74ms (Views: 1.1ms | ActiveRecord: 12.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:20:02 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (1.2ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 7 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:20:08 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.7ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 7 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-27 23:20:24 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (1.6ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.6ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x00110113081d6ba00dda41ffffffff04086906', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mSession Create (2.3ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-27 23:20:24.822506', '2025-05-27 23:20:24.822506') RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.02ms)
+Completed 201 Created in 400ms (Views: 0.3ms | ActiveRecord: 22.4ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:20:24 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:20:26 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:20:27 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:20:28 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:20:28 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-27 23:20:33 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.8ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 09:53:47 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (34.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 42ms (Views: 0.6ms | ActiveRecord: 38.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 09:57:41 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 29ms (Views: 0.5ms | ActiveRecord: 14.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 09:58:42 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 2.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 09:59:02 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 09:59:03 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 8 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-28 09:59:13 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (2.7ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.6ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x0011017f2e49d9c50dda41ffffffff04086906', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mSession Create (2.4ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-28 09:59:13.499267', '2025-05-28 09:59:13.499267') RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 201 Created in 411ms (Views: 0.3ms | ActiveRecord: 30.7ms (4 queries, 0 cached) | GC: 35.1ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-28 09:59:25 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (2.5ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.4ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x0011017f2e49d9c50dda41ffffffff04086907', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mSession Create (1.7ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-28 09:59:25.511230', '2025-05-28 09:59:25.511230') RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 201 Created in 364ms (Views: 0.3ms | ActiveRecord: 9.4ms (4 queries, 0 cached) | GC: 0.8ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-28 10:00:25 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (2.7ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.9ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x0011017f2e49d9c50dda41ffffffff04086908', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mSession Create (2.2ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-28 10:00:25.389892', '2025-05-28 10:00:25.389892') RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 201 Created in 369ms (Views: 0.3ms | ActiveRecord: 8.5ms (4 queries, 0 cached) | GC: 1.1ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-28 10:01:50 -0400
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (3.4ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.3ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x0011017f2e49d9c50dda41ffffffff04086909', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mSession Create (2.0ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-28 10:01:50.865077', '2025-05-28 10:01:50.865077') RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.02ms)
+Completed 201 Created in 366ms (Views: 0.3ms | ActiveRecord: 7.6ms (4 queries, 0 cached) | GC: 0.6ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-28 10:02:41 -0400
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (0.3ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.5ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x001101d4ef5a0dc60dda41ffffffff04086906', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mSession Create (2.0ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-28 10:02:41.788835', '2025-05-28 10:02:41.788835') RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 201 Created in 385ms (Views: 0.5ms | ActiveRecord: 31.2ms (4 queries, 0 cached) | GC: 2.2ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:02:41 -0400
+Processing by Api::V1::SessionsController#show as JSON
+  Parameters: {"session" => {}}
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 13 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:02:44 -0400
+Processing by Api::V1::SessionsController#show as JSON
+  Parameters: {"session" => {}}
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 13 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:02:47 -0400
+Processing by Api::V1::SessionsController#show as JSON
+  Parameters: {"session" => {}}
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 13 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:02:50 -0400
+Processing by Api::V1::SessionsController#show as JSON
+  Parameters: {"session" => {}}
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 13 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 8ms (Views: 0.7ms | ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:02:52 -0400
+Processing by Api::V1::SessionsController#show as JSON
+  Parameters: {"session" => {}}
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 13 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-05-28 10:02:55 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/sergiufrunza/.rvm/gems/ruby-3.4.2/gems/railties-8.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/sergiufrunza/.rvm/gems/ruby-3.4.2/gems/railties-8.0.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 16ms (Views: 4.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-05-28 10:02:55 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:03:00 -0400
+Processing by Api::V1::SessionsController#show as JSON
+  Parameters: {"session" => {}}
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 13 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 14.0ms)
+
+
+Started POST "/api/v1/session" for ::1 at 2025-05-28 10:03:23 -0400
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email_address" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Pluck (2.6ms)[0m  [1m[37mSELECT "solid_cache_entries"."key", "solid_cache_entries"."value" FROM "solid_cache_entries" WHERE "solid_cache_entries"."key_hash" = 1406004507928820726 LIMIT 1 FOR UPDATE /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mSolidCache::Entry Upsert (0.5ms)[0m  [1m[32mINSERT INTO "solid_cache_entries" ("key","value","key_hash","byte_size","created_at") VALUES ('\x646576656c6f706d656e743a726174652d6c696d69743a6170692f76312f73657373696f6e733a3a3a31', '\x001101d4ef5a0dc60dda41ffffffff04086907', 1406004507928820726, 201, CURRENT_TIMESTAMP) ON CONFLICT ("key_hash") DO UPDATE SET "key"=excluded."key","value"=excluded."value","byte_size"=excluded."byte_size" RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = 'frunza.sergiu3@gmail.com' LIMIT 1 /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:14:in 'Api::V1::SessionsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mSession Create (2.0ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "ip_address", "user_agent", "created_at", "updated_at") VALUES (1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-28 10:03:23.505251', '2025-05-28 10:03:23.505251') RETURNING "id" /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:52:in 'Authentication#start_new_session_for'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.02ms)
+Completed 201 Created in 367ms (Views: 0.3ms | ActiveRecord: 7.1ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:03:23 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 14 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/api/v1/session" for ::1 at 2025-05-28 10:03:31 -0400
+Processing by Api::V1::SessionsController#show as */*
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = 14 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/concerns/authentication.rb:32:in 'Authentication#find_session_by_cookie'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Api',controller='sessions'*/[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:38:in 'Api::V1::SessionsController#show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
