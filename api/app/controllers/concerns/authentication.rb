@@ -57,10 +57,9 @@ module Authentication
         cookies.signed.permanent[:session_id] = {
           value: session.id,
           expires: 30.days.from_now,
-          # httponly: true,
           same_site: :none,
           domain: :all,
-          secure: Rails.env.production? || Rails.env.development?
+          secure: true
         }
 
         @auth_token = token
@@ -79,6 +78,6 @@ module Authentication
 
   def terminate_session
     Current.session&.destroy
-    cookies.delete(:session_id)
+    cookies.delete(:session_id, domain: :all, secure: true, same_site: :none)
   end
 end

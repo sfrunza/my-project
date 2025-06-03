@@ -48,7 +48,7 @@ class Api::V1::SessionsController < ApplicationController
 
   def destroy
     terminate_session
-    render json: { message: "Logged out successfully" }, status: :ok
+    head :no_content
   end
 
   def refresh_token
