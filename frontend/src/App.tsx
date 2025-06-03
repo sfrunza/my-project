@@ -2,14 +2,11 @@ import { ThemeProvider } from '@/components/theme-provider';
 import ErrorPage from '@/pages/error/page';
 import { authRoutes } from '@/routes/auth.routes';
 import { store } from '@/store';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
 import { createBrowserRouter, Link, RouterProvider } from 'react-router';
 import { Toaster } from 'sonner';
-import AccountPage from '@/pages/account/page';
-import CrmPage from '@/pages/crm/page';
-import { verifyAuthLoader } from './loaders';
-import { GlobalFallback } from '@/components/global-fallback';
-import PrivateRoute from '@/components/private-route';
+import { crmRoutes } from '@/routes/crm.routes';
+import { accountRoutes } from '@/routes/account.routes';
 
 const router = createBrowserRouter([
   {
@@ -24,43 +21,18 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
-  {
-    path: '/account',
-    loader: verifyAuthLoader,
-    element: (
-      <PrivateRoute allowedRoles={['customer', 'admin']}>
-        <AccountPage />
-      </PrivateRoute>
-    ),
-    hydrateFallbackElement: <GlobalFallback />,
-  },
-  {
-    path: '/crm',
-    loader: verifyAuthLoader,
-    element: (
-      <PrivateRoute allowedRoles={['admin', 'manager']}>
-        <CrmPage />
-      </PrivateRoute>
-    ),
-    hydrateFallbackElement: <GlobalFallback />,
-  },
   ...authRoutes,
-  // crmRoutes,
-  // accountRoutes,
-  // dashboardRoutes
+  crmRoutes,
+  accountRoutes,
 ]);
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Provider store={store}>
+      <ReduxProvider store={store}>
         <RouterProvider router={router} />
-        <Toaster
-          position="top-center"
-          richColors
-          // closeButton
-        />
-      </Provider>
+        <Toaster position="top-center" richColors />
+      </ReduxProvider>
     </ThemeProvider>
   );
 }

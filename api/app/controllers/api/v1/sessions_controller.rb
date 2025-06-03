@@ -34,10 +34,12 @@ class Api::V1::SessionsController < ApplicationController
 
   def show
     if Current.session
-      render json:
-               Current.session.user.as_json(
-                 only: %i[id first_name last_name email_address role]
-               ),
+      render json: {
+               user:
+                 Current.session.user.as_json(
+                   only: %i[id first_name last_name email_address role]
+                 )
+             },
              status: :ok
     else
       render json: { error: "Please login" }, status: :unauthorized

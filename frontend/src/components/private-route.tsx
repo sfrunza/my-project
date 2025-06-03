@@ -1,7 +1,7 @@
 import { useAppSelector } from '@/store';
 import { Navigate, useLocation } from 'react-router';
 
-export default function PrivateRoute({
+export function PrivateRoute({
   allowedRoles,
   children,
 }: {

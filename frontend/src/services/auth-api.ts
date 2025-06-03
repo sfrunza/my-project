@@ -3,7 +3,7 @@ import { setUser } from '@/slices/auth-slice'
 import { baseQueryWithReauth } from './base-service'
 
 
-interface SessionUser {
+export interface SessionUser {
   id: number;
   first_name: string;
   last_name: string;
@@ -83,10 +83,7 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
-    verify: builder.mutation<{
-      error?: string;
-      user?: SessionUser;
-    }, void>({
+    verify: builder.mutation<{ error: string } | { user: SessionUser }, void>({
       query: () => ({
         url: '/session',
         method: 'GET',
@@ -94,8 +91,11 @@ export const authApi = createApi({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const response = await queryFulfilled;
-
-          dispatch(setUser(response.data));
+          if ('error' in response.data) {
+            dispatch(setUser(null));
+          } else {
+            dispatch(setUser(response.data.user));
+          }
         } catch (error) {
           dispatch(setUser(null));
           console.log("error", error);

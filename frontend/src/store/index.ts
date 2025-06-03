@@ -7,16 +7,19 @@ import {
 import authReducer from "@/slices/auth-slice";
 import { authApi } from "@/services/auth-api";
 import { rtkQueryErrorLogger } from "@/services/base-service";
+import { usersApi } from "@/services/users-api";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     [authApi.reducerPath]: authApi.reducer,
+    [usersApi.reducerPath]: usersApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       rtkQueryErrorLogger,
       authApi.middleware,
+      usersApi.middleware,
     ),
 });
 

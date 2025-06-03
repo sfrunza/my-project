@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         get :refresh_token
         delete :destroy
       end
+      resources :users, only: %i[show]
       resources :passwords, param: :token
       resources :posts
     end

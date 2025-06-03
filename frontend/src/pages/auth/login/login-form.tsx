@@ -78,12 +78,7 @@ export function LoginForm() {
             <Label htmlFor="password">Password</Label>
             <PasswordInput id="password" defaultValue={'111111'} required />
           </div>
-          <LoadingButton
-            loading={isLoading}
-            disabled={isLoading}
-            type="submit"
-            className="w-full"
-          >
+          <LoadingButton loading={isLoading} disabled={isLoading} type="submit">
             Login
           </LoadingButton>
         </form>
