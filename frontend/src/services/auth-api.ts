@@ -1,6 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { setUser } from '@/slices/auth-slice'
 import { baseQueryWithReauth } from './base-service'
+import Cookies from 'js-cookie';
 
 
 export interface SessionUser {
@@ -59,6 +60,7 @@ export const authApi = createApi({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
+          Cookies.remove("session_id")
           dispatch(setUser(null));
         } catch (error) {
           console.log("error", error);
@@ -92,11 +94,13 @@ export const authApi = createApi({
         try {
           const response = await queryFulfilled;
           if ('error' in response.data) {
+            Cookies.remove("session_id")
             dispatch(setUser(null));
           } else {
             dispatch(setUser(response.data.user));
           }
         } catch (error) {
+          Cookies.remove("session_id")
           dispatch(setUser(null));
           console.log("error", error);
         }
