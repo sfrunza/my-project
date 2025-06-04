@@ -1,24 +1,35 @@
-# README
+# Foobar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 8 api
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Add rails secrets for both dev and prod
 
-* System dependencies
+```bash
+# development
+VISUAL="code --wait" bin/rails credentials:edit
 
-* Configuration
+# production
+VISUAL="code --wait" bin/rails credentials:edit --environment production
+```
 
-* Database creation
+Example credentials
 
-* Database initialization
+```bash
+smtp:
+  user_name: xxxx
+  password: xxxx
 
-* How to run the test suite
+aws:
+  access_key_id: xxxx
+  secret_access_key: xxxx
+  region: xxxx
+  bucket: xxxx
 
-* Services (job queues, cache servers, search engines, etc.)
+secret_key_base: xxxxxxxxxxx
+jwt_secret: xxxxxxxxxx
+api_url: http://localhost:3000
+frontend_url: http://localhost:5173
 
-* Deployment instructions
-
-* ...
+```

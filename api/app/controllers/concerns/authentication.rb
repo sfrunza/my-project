@@ -1,7 +1,7 @@
 module Authentication
   extend ActiveSupport::Concern
 
-  JWT_SECRET = ENV.fetch("JWT_SECRET")
+  JWT_SECRET = Rails.application.credentials.dig(:jwt_secret)
 
   included { before_action :require_authentication }
 
