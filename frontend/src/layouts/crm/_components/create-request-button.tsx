@@ -5,21 +5,24 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useGetServicesQuery } from '@/services/services-api';
+// import { useNavigate } from 'react-router';
 // import { useGetServicesQuery } from '@/services/services-api';
 // import { useCreateRequestMutation } from '@/services/requests-api';
 
 export function CreateRequestButton() {
   // const navigate = useNavigate();
   // const [createRequest, { isLoading }] = useCreateRequestMutation();
-  // const { data: services } = useGetServicesQuery();
+  const { data: services } = useGetServicesQuery();
 
-  // const enabledServices = services?.filter((service) => service.enabled);
+  const enabledServices = services?.filter((service) => service.enabled);
 
   // async function handleCreateRequest(serviceId: number) {
-  // const response = await createRequest({ service_id: serviceId }).unwrap();
-  // navigate(`/crm/requests/${response.id}`);
+  //   const response = await createRequest({ service_id: serviceId }).unwrap();
+  //   navigate(`/crm/requests/${response.id}`);
   // }
 
   return (
@@ -40,16 +43,15 @@ export function CreateRequestButton() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuGroup>
-          services
-          {/* {enabledServices?.map((service, i) => (
+          {enabledServices?.map((service, i) => (
             <DropdownMenuItem
               key={i}
               className="cursor-pointer"
-              onClick={() => handleCreateRequest(service.id)}
+              // onClick={() => handleCreateRequest(service.id)}
             >
               {service.name}
             </DropdownMenuItem>
-          ))} */}
+          ))}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

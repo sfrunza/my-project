@@ -12,6 +12,11 @@ Rails.application.routes.draw do
       resources :users, only: %i[show]
       resources :passwords, param: :token
       resources :posts
+
+      resources :services, only: %i[index create destroy] do
+        collection { post :bulk_update }
+      end
+
     end
   end
 

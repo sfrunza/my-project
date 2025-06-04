@@ -2,7 +2,8 @@ import { GlobalFallback } from '@/components/global-fallback';
 import { PrivateRoute } from '@/components/private-route';
 import CrmLayout from '@/layouts/crm/layout';
 import { verifyAuthLoader } from '@/loaders';
-import { Navigate, Outlet } from 'react-router';
+import SettingsLayout from '@/pages/crm/settings/layout';
+import { Navigate } from 'react-router';
 
 export const crmRoutes = {
   path: 'crm',
@@ -43,16 +44,11 @@ export const crmRoutes = {
     },
     {
       path: 'settings',
-      element: (
-        <div>
-          Settings
-          <Outlet />
-        </div>
-      ),
+      element: <SettingsLayout />,
       children: [
         {
           path: 'services',
-          element: <div>Services</div>,
+          lazy: () => import('@/pages/crm/settings/services/page'),
           // lazy: () => import('@/pages/crm/settings/services/page'),
         },
         {

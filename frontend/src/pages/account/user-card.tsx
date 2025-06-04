@@ -36,12 +36,6 @@ export default function UserCard() {
             className="text-green-600 hover:text-green-600"
           >
             <PencilLineIcon />
-            {/* <PencilLineIcon
-              size={48}
-              strokeWidth={3}
-              absoluteStrokeWidth
-              className="size-6"
-            /> */}
           </Button>
         </CardAction>
       </CardHeader>
